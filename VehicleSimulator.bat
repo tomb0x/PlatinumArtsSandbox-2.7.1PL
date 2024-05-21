@@ -1,0 +1,1 @@
+bin\sandbox_krs.exe -r -lautodrome -qmy_stuff %*

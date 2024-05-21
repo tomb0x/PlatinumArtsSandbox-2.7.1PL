@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47pre4 r22446"
+   sodipodi:docname="skybox.svg"
+   inkscape:export-filename="/home/hirato/PlatinumArtsSandboxbeta/svn/trunk/data/hud/blackfog/icons/skybox.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5046">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.1254902;"
+         offset="0"
+         id="stop5048" />
+      <stop
+         id="stop5054"
+         offset="0.69999999"
+         style="stop-color:#ffffff;stop-opacity:0.627451;" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop5050" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3590">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="0"
+         id="stop3592" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.75"
+         id="stop3606" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3600" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective4074"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5046"
+       id="radialGradient5052"
+       cx="63.9375"
+       cy="69.25"
+       fx="63.9375"
+       fy="69.25"
+       r="35.6875"
+       gradientTransform="matrix(1,0,0,1.0367776,0,-2.5468476)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="53.821846"
+     inkscape:cy="88.087149"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1347"
+     inkscape:window-x="-4"
+     inkscape:window-y="-2"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-924.36218)">
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4126"
+       sodipodi:cx="39.332813"
+       sodipodi:cy="-25.088619"
+       sodipodi:rx="15.644737"
+       sodipodi:ry="12.197592"
+       d="m 54.977551,-25.088619 c 0,6.736544 -7.004388,12.197592 -15.644738,12.197592 -8.64035,0 -15.644737,-5.461048 -15.644737,-12.197592 0,-6.736544 7.004387,-12.197592 15.644737,-12.197592 8.64035,0 15.644738,5.461048 15.644738,12.197592 z"
+       transform="matrix(2.9212317,0,0,3.7467972,-50.900262,1082.3642)" />
+    <image
+       y="940.36218"
+       x="16"
+       id="image4076"
+       height="96"
+       width="96"
+       xlink:href="file:///home/hirato/PlatinumArtsSandboxbeta/svn/trunk/packages/clouds/moon.png" />
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient5052);fill-opacity:1;stroke:none"
+       id="path4092"
+       sodipodi:cx="63.9375"
+       sodipodi:cy="69.25"
+       sodipodi:rx="35.6875"
+       sodipodi:ry="37"
+       d="m 99.625,69.25 a 35.6875,37 0 1 1 -71.375,0 35.6875,37 0 1 1 71.375,0 z"
+       transform="matrix(1.793345,0,0,1.7297297,-50.661997,868.5784)" />
+  </g>
+</svg>

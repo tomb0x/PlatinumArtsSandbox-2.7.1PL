@@ -1,0 +1,1 @@
+bin\sandbox_pzl.exe -r -qmy_stuff %* -t0 -w1024

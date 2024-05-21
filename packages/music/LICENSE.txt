@@ -1,0 +1,4 @@
+
+Agent.ogg, Blue.ogg, Brilliance.ogg, Jingle.oggm Secrets.ogg, Taunt.ogg, Truth.ogg, Wild.ogg
+Composer: cork279
+License CC-BY
