@@ -1,0 +1,12 @@
+autorstwa Markusa "makkE" Bekela.
+
+Wykonane dla projektu Platinum Arts Sandbox.
+Niniejszym przekazuję wszelkie prawa do tych plików Mike'owi „Calimer” Tomaino, aby mógł zarządzać plikami według własnego uznania.
+
+Pliki obejmują:
+guioverlay.png
+guiskin.png
+guislider.png
+
+Oraz zawartość pakietów/ikon
+  
