@@ -111,12 +111,12 @@ static struct gamemodeinfo
     const char *info;
 } gamemodes[] =
 {
-    { "SP", M_LOCAL | M_CLASSICSP, "enable single player options" },
-    { "demo", M_DEMO | M_LOCAL, "playback recorded demos" },
-    { "default", M_LOBBY, "Run around freely without a care in the world" },
-    { "coop edit", M_EDIT, "Edit cooperatively with friends over the LAN or internet" },
-    { "banana relay", M_NOAMMO | M_TACTICS | M_CAPTURE | M_TEAM, "Capture bananas, robochimp is hungry" },
-    { "capture the banana (ctf)", M_CTF | M_TEAM, "Capture the other team's banana, and add it to your own"}
+    { "SP", M_LOCAL | M_CLASSICSP, "Uruchomiona gra jednoosobowa" },
+    { "demo", M_DEMO | M_LOCAL, "odtwarzaj zarejestrowane demonstracje" },
+    { "default", M_LOBBY, "Zwiedzaj swobodnie okolice" },
+    { "coop edit", M_EDIT, "Edytuj wspolnie z innymi przez siec lokalna lub internet" },
+    { "banana relay", M_NOAMMO | M_TACTICS | M_CAPTURE | M_TEAM, "Zbieraj banany, roboszympans jest głodny" },
+    { "capture the banana (ctf)", M_CTF | M_TEAM, "Złap banana drugiej drużyny i dodaj go do swoich"}
 };
 
 #define STARTGAMEMODE (-2)

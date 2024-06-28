@@ -5,7 +5,7 @@
 VARR(mapversion, 1, MAPVERSION, 0);
 VARNR(mapscale, worldscale, 1, 0, 0);
 VARNR(mapsize, worldsize, 1, 0, 0);
-SVARR(maptitle, "Untitled Map by Unknown");
+SVARR(maptitle, "Plansza niezatytulowana, autor: nieznany");
 
 VAR(octaentsize, 0, 128, 1024);
 VAR(entselradius, 0, 2, 10);
@@ -269,7 +269,7 @@ VARF(entediting, 0, 0, 1, { if(!entediting) { entcancel(); efocus = enthover = -
 
 bool noentedit()
 {
-    if(!editmode) { conoutf(CON_ERROR, "operation only allowed in edit mode"); return true; }
+    if(!editmode) { conoutf(CON_ERROR, "operacja dostepna tylko w trybie edycji"); return true; }
     return !entediting;
 }
 
@@ -828,7 +828,7 @@ void delent()
 int findtype(const char *what)
 {
     for(int i = 0; *entities::entname(i); i++) if(!strcmp(what, entities::entname(i))) return i;
-    conoutf(CON_ERROR, "unknown entity type \"%s\"", what);
+    conoutf(CON_ERROR, "nieznany typ obiektu \"%s\"", what);
     return ET_EMPTY;
 }
 
@@ -959,7 +959,7 @@ ICOMMAND(getattrnum, "s", (char *s),
 
 void newentity(int type, int *attrs)
 {
-    if(entities::getents().length() >= MAXENTS) { conoutf("too many entities"); return; }
+    if(entities::getents().length() >= MAXENTS) { conoutf("za dużo obiektow"); return; }
     extentity *t = newentity(true, player->o, type, attrs);
 
     dropentity(*t);
@@ -1200,7 +1200,7 @@ bool emptymap(int scale, bool force, const char *mname, bool usecfg)    // main 
 {
     if(!force && !editmode)
     {
-        conoutf(CON_ERROR, "newmap only allowed in edit mode");
+        conoutf(CON_ERROR, "newmap mozliwe tylko w trybie edycji");
         return false;
     }
 
@@ -1241,7 +1241,7 @@ bool enlargemap(bool force)
 {
     if(!force && !editmode)
     {
-        conoutf(CON_ERROR, "mapenlarge only allowed in edit mode");
+        conoutf(CON_ERROR, "mapenlarge mozliwe tylko w trybie edycji");
         return false;
     }
     if(worldsize >= 1<<16) return false;
@@ -1303,7 +1303,7 @@ void shrinkmap()
 
     allchanged();
 
-    conoutf("shrunk map to size %d", worldscale);
+    conoutf("plansza zmieniona do rozmiaru %d", worldscale);
 }
 
 void newmap(int *i) { bool force = !isconnected() && !haslocalclients(); if(force) game::forceedit(""); if(emptymap(*i, force, NULL)) game::newmap(max(*i, 0)); }

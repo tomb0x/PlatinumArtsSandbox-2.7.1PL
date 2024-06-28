@@ -38,10 +38,10 @@ static struct gamemodeinfo
     const char *info;
 } gamemodes[] =
 {
-    { "lobby", M_LOBBY, "Run around freely, just visit the map"},
-    { "movie", M_BOTS | M_CAMERA, "Spawn Characters and use Cameras to shot your movie" },
-    { "coop edit", M_EDIT | M_BOTS | M_CAMERA, "Edit cooperatively with friends over the LAN or internet" },
-    { "demo", M_DEMO | M_LOCAL, "playback recorded demos" },
+    { "lobby", M_LOBBY, "Biegaj swobodnie po okolicy, po prostu zwiedzaj plansze"},
+    { "movie", M_BOTS | M_CAMERA, "Stworz postacie i uzyj kamer do nagrania swojego filmu" },
+    { "coop edit", M_EDIT | M_BOTS | M_CAMERA, "Edytuj wspolnie z innymi przez siec lokalna lub internet" },
+    { "demo", M_DEMO | M_LOCAL, "odtworz zarejestrowane demonstracje" },
 };
 
 #define STARTGAMEMODE (1)

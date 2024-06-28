@@ -12,13 +12,13 @@ namespace game
 
     const monstertype monstertypes[NUMMONSTERTYPES] =
     {
-        { GUN_FIST,  4, 100, 3, 0,   100, 800, 50, 0,  5, S_PAINO, S_DIE1,   "A Butterfly",     "butterfly",       "butterfly"},
-        { GUN_BITE,  20, 800, 5, 0,   400, 1600, 100, 60,  4000, S_PAINO, S_DIE1,   "A Dragon",     "rpg/characters/dragon",       "Dragon"},
-        { GUN_FIST,  8, 800, 5, 0,   400, 1600, 100, 16,  4000, S_PAINO, S_DIE1,   "A Golem",     "rpg/characters/golem",       "golem"},
-        { GUN_FIST,  12, 200, 5, 0,   400, 1600, 100, 16,  800, S_PAINO, S_DIE1,   "A Grizzly",     "rpg/characters/grizzly",       "grizzly"},
-        { GUN_BITE,  25, 50, 5, 0,   400, 1600, 100, 2,  30, S_PAINO, S_DIE1,   "A Rat",     "rpg/characters/rat",       "rat"},
-        { GUN_FIST,  7, 150, 5, 0,   400, 1600, 100, 16,  200, S_PAINO, S_DIE1,   "A Snagon",     "rpg/characters/snagon",       "snagon"},
-        { GUN_BITE,  28, 80, 5, 0,   400, 1600, 100, 6,  150, S_PAINO, S_DIE1,   "A Wolf",     "rpg/characters/wolf",       "wolf"},
+        { GUN_FIST,  4, 100, 3, 0,    100, 800,   50,  0,     5, S_PAINO, S_DIE1,   "Motyl",       "butterfly",                    "butterfly"},
+        { GUN_BITE,  20, 800, 5, 0,   400, 1600, 100, 60,  4000, S_PAINO, S_DIE1,   "Smok",        "rpg/characters/dragon",        "Dragon"   },
+        { GUN_FIST,  8, 800, 5, 0,    400, 1600, 100, 16,  4000, S_PAINO, S_DIE1,   "Golem",       "rpg/characters/golem",         "golem"    },
+        { GUN_FIST,  12, 200, 5, 0,   400, 1600, 100, 16,   800, S_PAINO, S_DIE1,   "Grizzly",     "rpg/characters/grizzly",       "grizzly"  },
+        { GUN_BITE,  25, 50, 5, 0,    400, 1600, 100,  2,    30, S_PAINO, S_DIE1,   "Szczur",      "rpg/characters/rat",           "rat"      },
+        { GUN_FIST,  7, 150, 5, 0,    400, 1600, 100, 16,   200, S_PAINO, S_DIE1,   "Snagon",      "rpg/characters/snagon",        "snagon"   },
+        { GUN_BITE,  28, 80, 5, 0,    400, 1600, 100,  6,   150, S_PAINO, S_DIE1,   "Wilk",        "rpg/characters/wolf",          "wolf"     },
     };
 
     VAR(skill, 1, 3, 10);
@@ -330,7 +330,7 @@ namespace game
 
     void endsp(bool allkilled)
     {
-        conoutf(CON_GAMEINFO, allkilled ? "\f2you have cleared the map!" : "\f2you reached the exit!");
+        conoutf(CON_GAMEINFO, allkilled ? "\f2you have cleared the map!" : "\f2znalazles wyjscie!");
         monstertotal = 0;
         game::addmsg(N_FORCEINTERMISSION, "r");
     }

@@ -455,10 +455,10 @@ namespace game
         if(!h) h = player1;
         int contype = d==h || actor==h ? CON_FRAG_SELF : CON_FRAG_OTHER;
         string dname, aname;
-        copystring(dname, d==player1 ? "you" : colorname(d));
-        copystring(aname, actor==player1 ? "you" : colorname(actor));
+        copystring(dname, d==player1 ? "to Ty" : colorname(d));
+        copystring(aname, actor==player1 ? "To Ty" : colorname(actor));
         if(d==actor || actor->type==ENT_INANIMATE)
-            conoutf(contype, "\f2%s did something very dangerous%s", dname, d==player1 ? "!" : "");
+            conoutf(contype, "\f2%s zrobiles cos bardzo niebezpiecznego %s", dname, d==player1 ? "!" : "");
 
         deathstate(d);
 	ai::killed(d, actor);
@@ -475,8 +475,8 @@ namespace game
             intermission = true;
             player1->attacking = false;
 	    if(cmode) cmode->gameover();
-            conoutf(CON_GAMEINFO, "\f2intermission:");
-            conoutf(CON_GAMEINFO, "\f2game has ended!");
+            conoutf(CON_GAMEINFO, "\f2przerwa:");
+            conoutf(CON_GAMEINFO, "\f2gra zakonczona!");
 	    #ifndef NEWGUI
             showscores(true);
             #endif
@@ -533,7 +533,7 @@ namespace game
         unignore(cn);
         fpsent *d = clients[cn];
         if(!d) return;
-        if(notify && d->name[0]) conoutf("player %s disconnected", colorname(d));
+        if(notify && d->name[0]) conoutf("gracz %s odłączony", colorname(d));
         removetrackedparticles(d);
         removetrackeddynlights(d);
         if(cmode) cmode->removeplayer(d);
@@ -592,7 +592,7 @@ namespace game
             cmode->setup();
         }
 
-        conoutf(CON_GAMEINFO, "\f2game mode is %s", server::modename(gamemode));
+        conoutf(CON_GAMEINFO, "\f2tryb rozgrywki: %s", server::modename(gamemode));
 
         if(m_sp)
         {

@@ -655,7 +655,7 @@ void edgespan2vectorcube(cube &c)
 
 void converttovectorworld()
 {
-    conoutf(CON_WARN, "WARNING: old map, use savecurrentmap");
+    conoutf(CON_WARN, "UWAGA: stara plansza, uzyj savecurrentmap");
     loopi(8) edgespan2vectorcube(worldroot[i]);
 }
 

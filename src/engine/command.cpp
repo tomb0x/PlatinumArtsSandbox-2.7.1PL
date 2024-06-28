@@ -485,7 +485,7 @@ const char *getalias(const char *name)
 
 void setvarchecked(ident *id, int val)
 {
-    if(id->flags&IDF_READONLY) debugcode("variable %s is read-only", id->name);
+    if(id->flags&IDF_READONLY) debugcode("zmienna %s jest tylko do odczytu", id->name);
 #ifndef STANDALONE
     else if(!(id->flags&IDF_OVERRIDE) || identflags&IDF_OVERRIDDEN || game::showenthelpers())
 #else
@@ -497,8 +497,8 @@ void setvarchecked(ident *id, int val)
         {
             val = val<id->minval ? id->minval : id->maxval;                // clamp to valid range
             debugcode(id->flags&IDF_HEX ?
-                    (id->minval <= 255 ? "valid range for %s is %d..0x%X" : "valid range for %s is 0x%X..0x%X") :
-                    "valid range for %s is %d..%d",
+                    (id->minval <= 255 ? "poprawny zakres dla %s to %d..0x%X" : "poprawny zakres dla %s to 0x%X..0x%X") :
+                    "poprawny zakres dla %s to %d..%d",
                 id->name, id->minval, id->maxval);
         }
         *id->storage.i = val;
@@ -511,7 +511,7 @@ void setvarchecked(ident *id, int val)
 
 void setfvarchecked(ident *id, float val)
 {
-    if(id->flags&IDF_READONLY) debugcode("variable %s is read-only", id->name);
+    if(id->flags&IDF_READONLY) debugcode("zmienna %s jest tylko do odczytu", id->name);
 #ifndef STANDALONE
     else if(!(id->flags&IDF_OVERRIDE) || identflags&IDF_OVERRIDDEN || game::showenthelpers())
 #else
@@ -522,7 +522,7 @@ void setfvarchecked(ident *id, float val)
         if(val<id->minvalf || val>id->maxvalf)
         {
             val = val<id->minvalf ? id->minvalf : id->maxvalf;                // clamp to valid range
-            debugcode("valid range for %s is %s..%s", id->name, floatstr(id->minvalf), floatstr(id->maxvalf));
+            debugcode("poprawny zakres dla %s to %s..%s", id->name, floatstr(id->minvalf), floatstr(id->maxvalf));
         }
         *id->storage.f = val;
         id->changed();
@@ -534,7 +534,7 @@ void setfvarchecked(ident *id, float val)
 
 void setsvarchecked(ident *id, const char *val)
 {
-    if(id->flags&IDF_READONLY) debugcode("variable %s is read-only", id->name);
+    if(id->flags&IDF_READONLY) debugcode("zmienna %s jest tylko do odczytu", id->name);
 #ifndef STANDALONE
     else if(!(id->flags&IDF_OVERRIDE) || identflags&IDF_OVERRIDDEN || game::showenthelpers())
 #else
@@ -1556,7 +1556,7 @@ static const uint *runcode(const uint *code, tagval &result)
                 id = identmap[op>>8];
                 if(id->flags&IDF_UNKNOWN)
                 {
-                    debugcode("unknown command: %s", id->name);
+                    debugcode("nieznane polecenie: %s", id->name);
                     goto forceresult;
                 }
                 CALLALIAS(0);
@@ -1569,7 +1569,7 @@ static const uint *runcode(const uint *code, tagval &result)
                 {
                 noid:
                     if(isinteger(args[0].s)) goto litval;
-                    debugcode("unknown command: %s", args[0].s);
+                    debugcode("nieznane polecenie: %s", args[0].s);
                     forcenull(result);
                     goto forceresult;
                 }
@@ -1721,7 +1721,7 @@ bool execfile(const char *cfgfile, bool msg)
     char *buf = loadfile(path(s), NULL);
     if(!buf)
     {
-        if(msg) conoutf(CON_ERROR, "could not read \"%s\"", cfgfile);
+        if(msg) conoutf(CON_ERROR, "nie mozna odczytac \"%s\"", cfgfile);
         return false;
     }
     const char *oldsourcefile = sourcefile, *oldsourcestr = sourcestr;
@@ -1777,7 +1777,7 @@ void writecfg(const char *name)
     stream *f = openutf8file(path((name && name[0]) ? name : confname, true), "wb");
 
     if(!f) return;
-    f->printf("// automatically written on exit, DO NOT MODIFY\n// delete this file to have data/defaults.cfg and data/%s/defaults.cfg overwrite these settings\n// modify settings in game, or put settings in %s to override anything\n\n", game::gameident(), game::autoexec());
+    f->printf("// automatycznie zapisywane przy wyjsciu, NIE MODYFIKOWAC\n// usun ten plik aby data/defaults.cfg i data/%s/defaults.cfg nadpisaly te ustawienia\n// zmodyfikowane w grze, lub umiesc ustawienia w %s aby cokolwiek nadpisac\n\n", game::gameident(), game::autoexec());
     f->printf("if (&& (! $ignoreconfver) (!= $confver %i)) [\n\tsleep 500 [showgui keepconf]; setdefaults\n] [\n\n", confver);
 
     writecrosshairs(f);

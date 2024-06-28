@@ -1468,7 +1468,7 @@ void renderentinfo(int i)
 	{
 		case ET_LIGHT:
 			pos.z += 6;
-			formatstring(tmp)("Radius %i\n\fs\fRRed: %i\n\fJGreen: %i\n\fDBlue: %i\fr",
+			formatstring(tmp)("Promien %i\n\fs\fRCzerwony: %i\n\fJZielony: %i\n\fDNiebieski: %i\fr",
 				e.attr[0],
 				e.attr[1],
 				e.attr[2],
@@ -1478,7 +1478,7 @@ void renderentinfo(int i)
 
 		case ET_MAPMODEL:
 			pos.z += 9.0;
-			formatstring(tmp)("Yaw: %i\nModel: %s (%i)\nTrigger Type: %i\nTag: level_trigger_%i\nRadius: %i\nColour: \fs\fR%i \fJ%i \fD%i\fr",
+			formatstring(tmp)("Kurs: %i\nModel: %s (%i)\nTyp wyzwalacza: %i\nZnacznik: level_trigger_%i\nPromien: %i\nKolor: \fs\fR%i \fJ%i \fD%i\fr",
 				e.attr[0],
 				mapmodelname(e.attr[1]), e.attr[1],
 				e.attr[2],
@@ -1489,12 +1489,12 @@ void renderentinfo(int i)
 			break;
 		case ET_PLAYERSTART:
 			pos.z += 3.0;
-			formatstring(tmp)("Yaw: %i\nTag: %i", e.attr[0], e.attr[1]);
+			formatstring(tmp)("Kurs: %i\nTag: %i", e.attr[0], e.attr[1]);
 			break;
 
 		case ET_ENVMAP:
 			pos.z += 4.5;
-			formatstring(tmp)("Radius: %i\nSize: %i (%i)\nBlur: %i (%i)",
+			formatstring(tmp)("Promien: %i\nRozmiar: %i (%i)\nRozmycie: %i (%i)",
 				e.attr[0],
 				e.attr[1], e.attr[1] ? clamp(e.attr[1], 4, 9) : 0,
 				e.attr[2], e.attr[2] ? clamp(e.attr[2], 1, 2) : 0
@@ -1506,7 +1506,7 @@ void renderentinfo(int i)
 			{
 				case 0:
 					pos.z += 12.0f;
-					formatstring(tmp)("Type: Fire (0)\nRadius: %f\nHeight: %f\nColour: \fs\fR%i \fJ%i \fD%i\fr\nSize: %i\nSpeed: %i\nFade: %i\nGravity: %i",
+					formatstring(tmp)("Typ: Ogien (0)\nPromien: %f\nWysokosc: %f\nKolor: \fs\fR%i \fJ%i \fD%i\fr\nRozmiar: %i\nPredkosc: %i\nZanik: %i\nGrawitacja: %i",
 						//NULL,
 						e.attr[1] ? float(e.attr[1])/100.0f : 1.5f,
 						e.attr[2] ? float(e.attr[2])/100.0f : (e.attr[2] ? float(e.attr[2])/100.0f : 1.5f)/3,
@@ -1520,7 +1520,7 @@ void renderentinfo(int i)
 				case 1:
 				case 2:
 					pos.z += 12.0f;
-					formatstring(tmp)("Type: %s (%i)\nRadius: %i\nHeight: %i\nColour: \fs\fR%i \fJ%i \fD%i\fr\nSize: %i\nSpeed: %i\nFade: %i\nGravity: %i",
+					formatstring(tmp)("Typ: %s (%i)\nPromien: %i\nWysokosc: %i\nKolor: \fs\fR%i \fJ%i \fD%i\fr\nRozmiar: %i\nPredkosc: %i\nZanik: %i\nGrawitacja: %i",
 						e.attr[0]==1 ? "Flame" : "Smoke Plume", e.attr[0],
 							  e.attr[1],
 							  e.attr[2],
@@ -1535,7 +1535,7 @@ void renderentinfo(int i)
 				case 3:
 				case 4:
 					pos.z += 9.0f;
-					formatstring(tmp)("Type: %s (%i)\nDirection: %i\nRadius: %i\nFade: %i\nSize: %i\nGravity: %i",
+					formatstring(tmp)("Typ: %s (%i)\nKierunek: %i\nPromien: %i\nZanik: %i\nRozmiar: %i\nGrawitacja: %i",
 						e.attr[0]==3 ? "Smoke" : "Fountain", e.attr[0],
 						e.attr[1],
 						e.attr[2],
@@ -1546,7 +1546,7 @@ void renderentinfo(int i)
 					break;
 				case 5:
 					pos.z += 9.0;
-					formatstring(tmp)("Type: Explosion (5)\nSize: %i\nColour: \fs\fR%i \fJ%i \fD%i\fr",
+					formatstring(tmp)("Typ: Eksplozja (5)\nRozmiar: %i\nKolor: \fs\fR%i \fJ%i \fD%i\fr",
 						//NULL,
 						e.attr[1],
 						(e.attr[2] & 0xFF0000) >> 16, (e.attr[2] & 0xFF00) >> 8, e.attr[2] & 0xFF
@@ -1555,7 +1555,7 @@ void renderentinfo(int i)
 				case 6:
 				case 7:
 					pos.z += 6;
-					formatstring(tmp)("Type: Meter%s (%i)\nPercentage: %i\n1st Colour: \fs\fR%i \fJ%i \fD%i\fr\n2nd Colour: \fs\fR%i \fJ%i \fD%i\fr",
+					formatstring(tmp)("Typ: Meter%s (%i)\nPercentage: %i\n1st Colour: \fs\fR%i \fJ%i \fD%i\fr\n2nd Colour: \fs\fR%i \fJ%i \fD%i\fr",
 						e.attr[0]==7 ? " Versus" : "", e.attr[0],
 							  e.attr[1],
 							  (e.attr[2] & 0xFF0000) >> 16, (e.attr[2] & 0xFF00) >> 8, e.attr[2] & 0xFF,
@@ -1564,7 +1564,7 @@ void renderentinfo(int i)
 							  break;
 				case 8:
 					pos.z += 6;
-					formatstring(tmp)("Type: Text (8)\nTag: part_text_%i\nColour: \fs\fR%i \fJ%i \fD%i\fr\nSize %i",
+					formatstring(tmp)("Typ: Text (8)\nTag: part_text_%i\nKolor: \fs\fR%i \fJ%i \fD%i\fr\nSize %i",
 						//NULL,
 						e.attr[1],
 						(e.attr[2] & 0xFF0000) >> 16, (e.attr[2] & 0xFF00) >> 8, e.attr[2] & 0xFF,
@@ -1581,7 +1581,7 @@ void renderentinfo(int i)
 				{
 					pos.z += 12.0f;
 					const static char *typenames[] = {"Flare", "Lightning", "Fire", "Smoke", "Water", "Snow", "Leaves"};
-					formatstring(tmp)("Type: %s (%i)\n%s : %i\nLength: %i\nColour: \fs\fR%i \fJ%i \fD%i\fr\nFadetime w/%s collision: %i\nSize: %i\nVel: %i\nGravity: %i",
+					formatstring(tmp)("Typ: %s (%i)\n%s : %i\nLength: %i\nKolour: \fs\fR%i \fJ%i \fD%i\fr\nFadetime w/%s collision: %i\nSize: %i\nVel: %i\nGravity: %i",
 						typenames[e.attr[0] - 9], e.attr[0],
 						e.attr[1] >= 256 ? "Effect" : "Direction", e.attr[1],
 						e.attr[2],
@@ -1601,7 +1601,7 @@ void renderentinfo(int i)
 				case 34:
 				case 35:
 					pos.z += 7.5;
-					formatstring(tmp)("Type: %sLens Flare w/%s Sparkle (%i)\n\fs\fRRed: %i\n\fJGreen: %i\n\fDBlue: %i\n\frSize: %i",
+					formatstring(tmp)("Typ: %sLens Flare w/%s Sparkle (%i)\n\fs\fRRed: %i\n\fJGreen: %i\n\fDBlue: %i\n\frSize: %i",
 						(e.attr[0]==32 || e.attr[0] == 33) ? "" : "Fixed-Size ", (e.attr[0]==32 || e.attr[0]==34) ? "o" : "", e.attr[0],
 						e.attr[1],
 						e.attr[2],

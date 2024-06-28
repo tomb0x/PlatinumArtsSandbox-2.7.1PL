@@ -265,7 +265,7 @@ struct md2 : vertmodel, vertloader<md2>
         Texture *tex, *masks;
         loadskin(loadname, pname, tex, masks);
         mdl.initskins(tex, masks);
-        if(tex==notexture) conoutf("could not load model skin for %s", name1);
+        if(tex==notexture) conoutf("nie mozna zalodowac skorki modelu dla %s", name1);
         loading = this;
         identflags &= ~IDF_PERSIST;
         defformatstring(name3)("packages/models/%s/md2.cfg", loadname);

@@ -639,7 +639,7 @@ template<class MDL> struct vertcommands : modelcommands<MDL, struct MDL::vertmes
         if(!MDL::loading || MDL::loading->parts.empty()) { conoutf("not loading an %s", MDL::formatname()); return; }
         vector<int> anims;
         findanims(anim, anims);
-        if(anims.empty()) conoutf("could not find animation %s", anim);
+        if(anims.empty()) conoutf("nie znaleziono animacji %s", anim);
         else loopv(anims)
         {
             MDL::loading->parts.last()->setanim(0, anims[i], *frame, *range, *speed, *priority);

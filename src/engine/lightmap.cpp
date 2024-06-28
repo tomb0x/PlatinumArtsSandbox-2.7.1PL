@@ -2099,7 +2099,7 @@ void calclight(int *quality)
 	defformatstring(capt)("Sandbox %s: %s - Calculating Lightmaps...", version, mname);
 	SDL_WM_SetCaption(capt, NULL);
 
-	renderbackground("computing lightmaps... (esc to abort)");
+	renderbackground("wyliczanie odwzorowan swiatel... (esc przerywa)");
 
     mpremip(true);
     optimizeblendmap();
@@ -2133,13 +2133,13 @@ void calclight(int *quality)
     if(!editmode) compressed.clear();
     initlights();
 
-    renderbackground("lighting done...");
+    renderbackground("oswietlenie wykonane...");
 
     allchanged();
     if(calclight_canceled)
         conoutf("calclight aborted");
     else
-        conoutf("generated %d lightmaps using %.2f%% of %d textures (%.1f seconds)",
+        conoutf("wygenerowano %d odwzorowan swiatel przy uzyciu %.2f%% z %d tekstur (%.1f sekund)",
             total,
             lightmaps.length() ? lumels * 100.0 / (lightmaps.length() * LM_PACKW * LM_PACKH) : 0,
             lightmaps.length(),
@@ -2162,7 +2162,7 @@ void patchlight(int *quality)
 	extern string mname;
 	defformatstring(capt)("Sandbox %s: %s - Patching Lightmaps...", version, mname);
 	SDL_WM_SetCaption(capt, NULL);
-	renderbackground("patching lightmaps... (esc to abort)");
+	renderbackground("naprawianie odwzorowan swiatel... (esc przerywa)");
     loadlayermasks();
     if(lightthreads > 1) preloadusedmapmodels(false, true);
     cleanuplightmaps();
@@ -2179,7 +2179,7 @@ void patchlight(int *quality)
     calclight_canceled = false;
     check_calclight_progress = false;
     SDL_TimerID timer = SDL_AddTimer(250, calclighttimer, NULL);
-    if(patchnormals) renderprogress(0, "computing normals...");
+    if(patchnormals) renderprogress(0, "wyliczanie normalnych...");
     Uint32 start = SDL_GetTicks();
     if(patchnormals) calcnormals(lerptjoints > 0);
     show_calclight_progress();
@@ -2195,7 +2195,7 @@ void patchlight(int *quality)
         lumels += lightmaps[i].lumels;
     }
     initlights();
-    renderbackground("lighting done...");
+    renderbackground("oswietlenie wykonane...");
     allchanged();
     if(calclight_canceled)
         conoutf("patchlight aborted");

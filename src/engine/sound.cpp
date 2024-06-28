@@ -424,7 +424,7 @@ int playsound(int n, const vec *loc, extentity *ent, int loops, int fade, int ch
     if(nosound || !soundvol) return -1;
 
     vector<soundslot> &sounds = ent ? mapsounds : gamesounds;
-    if(!sounds.inrange(n)) { conoutf(CON_WARN, "unregistered sound: %d", n); return -1; }
+    if(!sounds.inrange(n)) { conoutf(CON_WARN, "niezarejestrowany dzwiek: %d", n); return -1; }
     soundslot &slot = sounds[n];
 
     if(loc && (maxsoundradius || radius > 0))

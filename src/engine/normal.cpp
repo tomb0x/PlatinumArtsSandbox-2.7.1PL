@@ -131,7 +131,7 @@ static uint progress = 0;
 void show_addnormals_progress()
 {
     float bar1 = float(progress) / float(allocnodes);
-    renderprogress(bar1, "computing normals...");
+    renderprogress(bar1, "wyliczanie normalnych...");
 }
 
 void addnormals(cube &c, const ivec &o, int size)

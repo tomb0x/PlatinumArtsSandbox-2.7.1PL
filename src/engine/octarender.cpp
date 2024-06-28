@@ -1047,7 +1047,7 @@ void gencubeedges(cube &c, int x, int y, int z, int size)
 
 void gencubeedges(cube *c = worldroot, int x = 0, int y = 0, int z = 0, int size = worldsize>>1)
 {
-    progress("fixing t-joints...");
+    progress("ustalanie polaczen T...");
     neighbourstack[++neighbourdepth] = c;
     loopi(8)
     {
@@ -1597,7 +1597,7 @@ VARF(vacubemin, 0, 128, 256*256, allchanged());
 
 int updateva(cube *c, int cx, int cy, int cz, int size, int csi)
 {
-    progress("recalculating geometry...");
+    progress("przeliczanie geometrii...");
     static int faces[6];
     int ccount = 0, cmergemax = vamergemax, chasmerges = vahasmerges;
     neighbourstack[++neighbourdepth] = c;

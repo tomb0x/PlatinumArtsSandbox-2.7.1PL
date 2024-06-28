@@ -577,11 +577,11 @@ static struct applymenu : menu
     {
         if(guistack.empty()) return;
         g.start(menustart, 0.03f);
-        g.text("the following settings have changed:", guitextcolour, "info");
+        g.text("zmienione ustawienia:", guitextcolour, "info");
         loopv(needsapply) g.text(needsapply[i].desc, guitextcolour, "info");
         g.separator();
-        g.text("apply changes now?", guitextcolour, "info");
-        if(g.button("yes", guibuttoncolour, "action")&G3D_UP)
+        g.text("akceptujesz zmiany teraz?", guitextcolour, "info");
+        if(g.button("tak", guibuttoncolour, "action")&G3D_UP)
         {
             int changetypes = 0;
             loopv(needsapply) changetypes |= needsapply[i].type;
@@ -589,7 +589,7 @@ static struct applymenu : menu
             if(changetypes&CHANGE_SOUND) updatelater.add().schedule("resetsound");
             clearlater = true;
         }
-        if(g.button("no", guibuttoncolour, "action")&G3D_UP)
+        if(g.button("nie", guibuttoncolour, "action")&G3D_UP)
             clearlater = true;
         g.end();
     }

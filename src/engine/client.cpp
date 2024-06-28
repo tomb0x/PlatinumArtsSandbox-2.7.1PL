@@ -9,7 +9,7 @@ int connmillis = 0, connattempts = 0, discmillis = 0;
 bool multiplayer(bool msg)
 {
     bool val = curpeer || hasnonlocalclients();
-    if(val && msg) conoutf(CON_ERROR, "operation not available in multiplayer");
+    if(val && msg) conoutf(CON_ERROR, "operacja niedostępna w trybie wieloosobowym");
     return val;
 }
 
@@ -77,7 +77,7 @@ void connectserv(const char *servername, int serverport, const char *serverpassw
 {
     if(connpeer)
     {
-        conoutf("aborting connection attempt");
+        conoutf("przerywanie próby połączenia");
         abortconnect();
     }
 
@@ -91,10 +91,10 @@ void connectserv(const char *servername, int serverport, const char *serverpassw
         if(strcmp(servername, connectname)) setsvar("connectname", servername);
         if(serverport != connectport) setvar("connectport", serverport);
         addserver(servername, serverport, serverpassword && serverpassword[0] ? serverpassword : NULL);
-        conoutf("attempting to connect to %s:%d", servername, serverport);
+        conoutf("próba połączenia do %s:%d", servername, serverport);
         if(!resolverwait(servername, &address))
         {
-            conoutf("\f3could not resolve server %s", servername);
+            conoutf("\f3nie można rozpoznać serwera %s", servername);
             return;
         }
     }
@@ -102,7 +102,7 @@ void connectserv(const char *servername, int serverport, const char *serverpassw
     {
         setsvar("connectname", "");
         setvar("connectport", 0);
-        conoutf("attempting to connect over LAN");
+        conoutf("próba połączenia poprzez sieć lokalną");
         address.host = ENET_HOST_BROADCAST;
     }
 
@@ -118,14 +118,14 @@ void connectserv(const char *servername, int serverport, const char *serverpassw
 
         game::connectattempt(servername ? servername : "", serverpassword ? serverpassword : "", address);
     }
-    else conoutf("\f3could not connect to server");
+    else conoutf("\f3nie można połączyć się z serwerem");
 }
 
 void reconnect(const char *serverpassword)
 {
     if(!connectname[0] || connectport <= 0)
     {
-        conoutf(CON_ERROR, "no previous connection");
+        conoutf(CON_ERROR, "brak poprzedniego połączenia");
         return;
     }
 
@@ -149,7 +149,7 @@ void disconnect(bool async, bool cleanup)
         }
         curpeer = NULL;
         discmillis = 0;
-        conoutf("disconnected");
+        conoutf("odłączony");
 		game::gamedisconnect(cleanup);
 		#ifndef NEWGUI
 		mainmenu = 1;
@@ -169,15 +169,15 @@ void trydisconnect()
 {
     if(connpeer)
     {
-        conoutf("aborting connection attempt");
+        conoutf("przerwanie próby połączenia");
         abortconnect();
     }
     else if(curpeer)
     {
-        conoutf("attempting to disconnect...");
+        conoutf("próba rozłączenia...");
         disconnect(!discmillis);
     }
-    else conoutf("not connected");
+    else conoutf("nie połączono");
 
 }
 
@@ -201,7 +201,7 @@ void flushclient()
 
 void neterr(const char *s, bool disc)
 {
-    conoutf(CON_ERROR, "\f3illegal network message (%s)", s);
+    conoutf(CON_ERROR, "\f3nielegalny komunikat sieciowy (%s)", s);
     if(disc) disconnect();
 }
 
@@ -219,12 +219,12 @@ void gets2c()           // get updates from the server
     if(!clienthost) return;
     if(connpeer && totalmillis/3000 > connmillis/3000)
     {
-        conoutf("attempting to connect...");
+        conoutf("próba połączenia...");
         connmillis = totalmillis;
         ++connattempts;
         if(connattempts > 3)
         {
-            conoutf("\f3could not connect to server");
+            conoutf("\f3nie można połączyć się z serwerem");
             abortconnect();
             return;
         }
@@ -237,14 +237,14 @@ void gets2c()           // get updates from the server
             localdisconnect(false);
             curpeer = connpeer;
             connpeer = NULL;
-            conoutf("connected to server");
+            conoutf("połączono z serwerem");
             throttle();
             if(rate) setrate(rate);
             game::gameconnect(true);
             break;
 
         case ENET_EVENT_TYPE_RECEIVE:
-            if(discmillis) conoutf("attempting to disconnect...");
+            if(discmillis) conoutf("próba rozłączenia...");
             else localservertoclient(event.channelID, event.packet);
             enet_packet_destroy(event.packet);
             break;
@@ -254,12 +254,12 @@ void gets2c()           // get updates from the server
             if(event.data>=DISC_NUM) event.data = DISC_NONE;
             if(event.peer==connpeer)
             {
-                conoutf("\f3could not connect to server");
+                conoutf("\f3nie można połączyć się z serwerem");
                 abortconnect();
             }
             else
             {
-                if(!discmillis || event.data) conoutf("\f3server network error, disconnecting (%s) ...", disc_reasons[event.data]);
+                if(!discmillis || event.data) conoutf("\f3błąd sieci serwera, rozłączanie (%s) ...", disc_reasons[event.data]);
                 disconnect();
             }
             return;

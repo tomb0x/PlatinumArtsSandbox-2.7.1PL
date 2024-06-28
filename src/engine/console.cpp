@@ -229,9 +229,9 @@ void getbind(char *key, int type)
 
 void bindkey(char *key, char *action, int state, const char *cmd)
 {
-    if(identflags&IDF_OVERRIDDEN) { conoutf(CON_ERROR, "cannot override %s \"%s\"", cmd, key); return; }
+    if(identflags&IDF_OVERRIDDEN) { conoutf(CON_ERROR, "nie mozna nadpisac %s \"%s\"", cmd, key); return; }
     keym *km = findbind(key);
-    if(!km) { conoutf(CON_ERROR, "unknown key \"%s\"", key); return; }
+    if(!km) { conoutf(CON_ERROR, "nieznany klawisz \"%s\"", key); return; }
     char *&binding = km->actions[state];
     if(!keypressed || keyaction!=binding) delete[] binding;
     // trim white-space to make searchbinds more reliable
@@ -658,7 +658,7 @@ void addcomplete(char *command, int type, char *dir, char *ext)
 {
     if(identflags&IDF_OVERRIDDEN)
     {
-        conoutf(CON_ERROR, "cannot override complete %s", command);
+        conoutf(CON_ERROR, "nie mozna nadpisac kompletne %s", command);
         return;
     }
     if(!dir[0])

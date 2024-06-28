@@ -89,7 +89,7 @@ EntityHandlerTeleport::EntityHandlerTeleport()
 void EntityHandlerTeleport::renderhelpertext(const extentity &e, int &colour, vec &pos, string &tmp)
 {
 	pos.z += 3.0;
-	formatstring(tmp)("Teledest Tag: %i\nModel: %s (%i)\nTag: %i",
+	formatstring(tmp)("Znacznik celu teleportacji: %i\nModel: %s (%i)\nZnacznik: %i",
 		e.attr[0],
 		mapmodelname(e.attr[1]),
 		e.attr[1]
@@ -144,7 +144,7 @@ void EntityHandlerTeledest::renderhelper(extentity &e, bool &color)
 void EntityHandlerTeledest::renderhelpertext(const extentity &e, int &colour, vec &pos, string &tmp)
 {
 	pos.z += 3;
-	formatstring(tmp)("Yaw: %i\nTeleport Tag: %i\n",
+	formatstring(tmp)("Kierunek: %i\nZnacznik Teleportu: %i\n",
 			e.attr[0],
 			e.attr[1]
 	);
@@ -201,7 +201,7 @@ void EntityHandlerBox::renderhelper(extentity &e, bool &color)
 void EntityHandlerBox::renderhelpertext(const extentity &e, int &colour, vec &pos, string &tmp)
 {
 	pos.z += 6.0;
-	formatstring(tmp)("Yaw: %i\nModel: %s (%i)\nWeight: %i\nHealth: %i",
+	formatstring(tmp)("Kierunek: %i\nModel: %s (%i)\nWaga: %i\nKondycja: %i",
 		e.attr[0],
 		mapmodelname(e.attr[1]), e.attr[1],
 		e.attr[2],
@@ -247,7 +247,7 @@ void EntityHandlerPlatform::renderhelper(extentity &e, bool &color)
 void EntityHandlerPlatform::renderhelpertext(const extentity &e, int &colour, vec &pos, string &tmp)
 {
 	pos.z += 6.0;
-	formatstring(tmp)("Yaw: %i\nModel: %s (%i)\nTag: %i\nSpeed: %i",
+	formatstring(tmp)("Kierunek: %i\nModel: %s (%i)\nZnacznik: %i\nSzybkosc: %i",
 			e.attr[0],
 			mapmodelname(e.attr[1]), e.attr[1],
 			e.attr[2],
@@ -295,7 +295,7 @@ void EntityHandlerWaypoint::renderhelper(extentity &e, bool &color)
 void EntityHandlerWaypoint::renderhelpertext(const extentity &e, int &colour, vec &pos, string &tmp)
 {
 	pos.z += 4.5f;
-	formatstring(tmp)("Direction %i\nRadius %i",
+	formatstring(tmp)("Kierunek %i\nPromien %i",
 			e.attr[0],
 			e.attr[1]
 	);
@@ -317,7 +317,7 @@ void EntityHandlerCamera::renderhelper(extentity &e, bool &color)
 void EntityHandlerCamera::renderhelpertext(const extentity &e, int &colour, vec &pos, string &tmp)
 {
 	pos.z += 7.5;
-	formatstring(tmp)("Yaw: %i\nPitch: %i\nDistance: %i",
+	formatstring(tmp)("Kierunek: %i\nWysokosc: %i\nOdleglosc: %i",
 		e.attr[0],
 		e.attr[1],
 		e.attr[2]
@@ -340,7 +340,7 @@ void EntityHandlerDynlight::renderhelper(extentity &e, bool &color)
 void EntityHandlerDynlight::renderhelpertext(const extentity &e, int &colour, vec &pos, string &tmp)
 {
 	pos.z += 9.0;
-	formatstring(tmp)("Radius %i\n\fs\fRRed: %i\n\fJGreen: %i\n\fDBlue: %i\fr\nTag: %i",
+	formatstring(tmp)("Promien %i\n\fs\fRCzerwony: %i\n\fJZielony: %i\n\fDNiebieskie: %i\fr\nZnacznik: %i",
 			e.attr[0],
 			e.attr[1],
 			e.attr[2],

@@ -214,7 +214,7 @@ namespace game
             {
                 g.pushlist();
                 g.strut(6);
-                g.text("frags", fgcolor);
+                g.text("straty", fgcolor);
                 loopscoregroup(o, g.textf("%d", 0xFFFFDD, NULL, o->frags));
                 g.poplist();
             }
@@ -251,7 +251,7 @@ namespace game
             }
 
             g.pushlist();
-            g.text("name", fgcolor);
+            g.text("nazwa", fgcolor);
             g.strut(13);
             loopscoregroup(o,
             {

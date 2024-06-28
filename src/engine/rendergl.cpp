@@ -188,7 +188,7 @@ void gl_checkextensions()
     const char *renderer = (const char *)glGetString(GL_RENDERER);
     const char *version = (const char *)glGetString(GL_VERSION);
     conoutf(CON_INIT, "Renderer: %s (%s)", renderer, vendor);
-    conoutf(CON_INIT, "Driver: %s", version);
+    conoutf(CON_INIT, "Sterownik: %s", version);
 
 #ifdef __APPLE__
     extern int mac_osversion();
@@ -2491,7 +2491,7 @@ void resetgl()
 
     reloadfonts();
     inbetweenframes = true;
-    renderbackground("initializing...");
+    renderbackground("rozpoczynanie...");
     extern void restoregamma();
     restoregamma();
     reloadshaders();

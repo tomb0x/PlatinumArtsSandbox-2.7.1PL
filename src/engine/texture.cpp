@@ -1083,7 +1083,7 @@ static bool texturedata(ImageData &d, const char *tname, Slot::Tex *tex = NULL, 
         {
             cmds = tex->name;
             file = strrchr(tex->name, '>');
-            if(!file) { if(msg) conoutf(CON_ERROR, "could not load texture packages/%s", tex->name); return false; }
+            if(!file) { if(msg) conoutf(CON_ERROR, "nie mozna odczytac tekstury packages/%s", tex->name); return false; }
             file++;
         }
         else file = tex->name;
@@ -1096,7 +1096,7 @@ static bool texturedata(ImageData &d, const char *tname, Slot::Tex *tex = NULL, 
     {
         cmds = tname;
         file = strrchr(tname, '>');
-        if(!file) { if(msg) conoutf(CON_ERROR, "could not load texture %s", tname); return NULL; }
+        if(!file) { if(msg) conoutf(CON_ERROR, "nie mozna odczytac tekstury %s", tname); return NULL; }
         file++;
     }
     bool raw = !usedds || !compress, dds = false;
@@ -1142,11 +1142,11 @@ static bool texturedata(ImageData &d, const char *tname, Slot::Tex *tex = NULL, 
         copystring(dfile, file);
         memcpy(dfile + flen - 4, ".dds", 4);
         if(!raw && hasTC && loaddds(dfile, d)) return true;
-        if(!dds || dbgdds) { if(msg) conoutf(CON_ERROR, "could not load texture %s", dfile); return false; }
+        if(!dds || dbgdds) { if(msg) conoutf(CON_ERROR, "nie mozna odczytac tekstury %s", dfile); return false; }
     }
 
     SDL_Surface *s = loadsurface(file);
-    if(!s) { if(msg) conoutf(CON_ERROR, "could not load texture %s", file); return false; }
+    if(!s) { if(msg) conoutf(CON_ERROR, "nie mozna odczytac tekstury %s", file); return false; }
     int bpp = s->format->BitsPerPixel;
     if(bpp%8 || !texformat(bpp/8)) { SDL_FreeSurface(s); conoutf(CON_ERROR, "texture must be 8, 16, 24, or 32 bpp: %s", file); return false; }
     if(max(s->w, s->h) > (1<<12)) { SDL_FreeSurface(s); conoutf(CON_ERROR, "texture size exceeded %dx%d pixels: %s", 1<<12, 1<<12, file); return false; }
@@ -2517,7 +2517,7 @@ Texture *cubemapload(const char *name, bool mipit, bool msg, bool transient)
     {
         defformatstring(fname)("%s_*", pname);
         t = cubemaploadwildcard(NULL, fname, mipit, false, transient);;
-        if(!t && msg) conoutf(CON_ERROR, "could not load envmap %s", name);
+        if(!t && msg) conoutf(CON_ERROR, "nie mozna odczytac envmap %s", name);
     }
     else t = cubemaploadwildcard(NULL, pname, mipit, msg, transient);
     return t;

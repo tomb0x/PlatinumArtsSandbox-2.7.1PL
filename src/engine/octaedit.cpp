@@ -144,7 +144,7 @@ void toggleedit(bool force)
 
 bool noedit(bool view, bool msg)
 {
-    if(!editmode) { if(msg) conoutf(CON_ERROR, "operation only allowed in edit mode"); return true; }
+    if(!editmode) { if(msg) conoutf(CON_ERROR, "operacja mozliwa tylko w trybie edycji"); return true; }
     if(view || haveselent()) return false;
     float r = 1.0f;
     vec o = sel.o.tovec(), s = sel.s.tovec();
@@ -152,7 +152,7 @@ bool noedit(bool view, bool msg)
     o.add(s);
     r = float(max(s.x, max(s.y, s.z)));
     bool viewable = (isvisiblesphere(r, o) != VFC_NOT_VISIBLE);
-    if(!viewable && msg) conoutf(CON_ERROR, "selection not in view");
+    if(!viewable && msg) conoutf(CON_ERROR, "zaznaczenie niewidoczne");
     return !viewable;
 }
 
@@ -751,7 +751,7 @@ void makeundo()                        // stores state of selected cubes before 
 void swapundo(undolist &a, undolist &b, const char *s)
 {
     if(noedit() || (nompedit && multiplayer())) return;
-    if(a.empty()) { conoutf(CON_WARN, "nothing more to %s", s); return; }
+    if(a.empty()) { conoutf(CON_WARN, "niewykonalne %s", s); return; }
     int ts = a.last->timestamp;
 
     selinfo l = sel;
@@ -784,8 +784,8 @@ void swapundo(undolist &a, undolist &b, const char *s)
     forcenextundo();
 }
 
-void editundo() { swapundo(undos, redos, "undo"); }
-void editredo() { swapundo(redos, undos, "redo"); }
+void editundo() { swapundo(undos, redos, "cofanie"); }
+void editredo() { swapundo(redos, undos, "ponawianie"); }
 
 vector<editinfo *> editinfos;
 editinfo *localedit = NULL;
@@ -2276,7 +2276,7 @@ struct texturegui : g3d_callback
         g.start(menustart, 0.04f, &menutab);
         loopi(numtabs)
         {
-            g.tab(!i ? "Textures" : NULL, 0xAAFFAA);
+            g.tab(!i ? "Tekstury" : NULL, 0xAAFFAA);
             if(i+1 != origtab) continue; //don't load textures on non-visible tabs!
 
             loop(h, texguiheight)
@@ -2328,7 +2328,7 @@ struct texturegui : g3d_callback
 
             extern int guitextcolour;
             g.pushlist();
-            defformatstring(ds)("Texture: %s", prev.sts[0].name);
+            defformatstring(ds)("Tekstura: %s", prev.sts[0].name);
             if(ds[60]) //shorten strings, to avoid a jittery interface
             {
                 ds[60] = '\0';
@@ -2336,7 +2336,7 @@ struct texturegui : g3d_callback
             }
             g.text(ds, guitextcolour, "info");
 
-            formatstring(ds)("layer: %i\tShader: %s", vprev.layer, prev.shader->name);
+            formatstring(ds)("warstwa: %i\tShader: %s", vprev.layer, prev.shader->name);
             if(ds[60]) //shorten strings, to avoid a jittery interface
             {
                 ds[60] = '\0';
@@ -2344,10 +2344,10 @@ struct texturegui : g3d_callback
             }
             g.text(ds, guitextcolour, "info");
 
-            formatstring(ds)("Scale: %.2f\tAlpha %.2f %.2f", vprev.scale, vprev.alphafront, vprev.alphaback);
+            formatstring(ds)("Skala: %.2f\tAlpha %.2f %.2f", vprev.scale, vprev.alphafront, vprev.alphaback);
             g.text(ds, guitextcolour, "info");
 
-            formatstring(ds)("Scroll: %.2f %.2f\toffset %i %i", vprev.scrollS * 1000.0f, vprev.scrollT * 1000.0f, vprev.xoffset, vprev.yoffset);
+            formatstring(ds)("Przewijanie: %.2f %.2f\tprzesuniecie %i %i", vprev.scrollS * 1000.0f, vprev.scrollT * 1000.0f, vprev.xoffset, vprev.yoffset);
             g.text(ds, guitextcolour, "info");
 
             g.poplist();
@@ -2384,7 +2384,7 @@ void g3d_texturemenu()
 
 void showtexgui(int *n)
 {
-    if(!editmode) { conoutf(CON_ERROR, "operation only allowed in edit mode"); return; }
+    if(!editmode) { conoutf(CON_ERROR, "operacja mozliwa tylko w trybie edycji"); return; }
     gui.showtextures(*n==0 ? !gui.menuon : *n==1);
 }
 

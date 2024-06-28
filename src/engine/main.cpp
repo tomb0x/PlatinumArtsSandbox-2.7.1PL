@@ -1,7 +1,7 @@
 // main.cpp: initialisation & main loop
 #include "engine.h"
 
-SVARO(version, "2.7.1");
+SVARO(version, "2.7.1NPL01");
 string imagelogo;
 
 extern void cleargamma();
@@ -103,7 +103,7 @@ void writeinitcfg()
     if(!restoredinits) return;
     stream *f = openutf8file("init.cfg", "wb");
     if(!f) return;
-    f->printf("// automatically written on exit, DO NOT MODIFY\n// modify settings in game\n");
+    f->printf("// automatycznie zapisywane przy wyjsciu, NIE MODYFIKOWAC\n// modyfikuj ustawienia w grze\n");
     extern int fullscreen;
     f->printf("fullscreen %d\n", fullscreen);
     f->printf("scr_w %d\n", scr_w);
@@ -393,7 +393,7 @@ void setupscreen(int &usedcolorbits, int &useddepthbits, int &usedfsaa)
             scr_w = min(scr_w >= 0 ? scr_w : (scr_h >= 0 ? (scr_h*SCR_DEFAULTW)/SCR_DEFAULTH : SCR_DEFAULTW), (int)modes[widest]->w);
             scr_h = min(scr_h >= 0 ? scr_h : (scr_w >= 0 ? (scr_w*SCR_DEFAULTH)/SCR_DEFAULTW : SCR_DEFAULTH), (int)modes[widest]->h);
         }
-	if(dbgmodes) conoutf(CON_DEBUG, "selected %d x %d", scr_w, scr_h);
+	if(dbgmodes) conoutf(CON_DEBUG, "seleCted %d x %d", scr_w, scr_h);
     }
     if(scr_w < 0 && scr_h < 0) { scr_w = SCR_DEFAULTW; scr_h = SCR_DEFAULTH; }
     else if(scr_w < 0) scr_w = (scr_h*SCR_DEFAULTW)/SCR_DEFAULTH;
@@ -768,16 +768,16 @@ int main(int argc, char **argv)
             case 'q':
             {
                 const char *dir = sethomedir(&argv[i][2]);
-                if(dir) logoutf("Using home directory: %s", dir);
+                if(dir) logoutf("Katalog domowy ustawiony na: %s", dir);
                 break;
             }
             case 'k':
             {
                 const char *dir = addpackagedir(&argv[i][2]);
-                if(dir) logoutf("Adding package directory: %s", dir);
+                if(dir) logoutf("Dodanie katalogu z pakietami: %s", dir);
                 break;
             }
-            case 'g': logoutf("Setting log file", &argv[i][2]); setlogfile(&argv[i][2]); break;
+            case 'g': logoutf("Ustawienie pliku dziennika", &argv[i][2]); setlogfile(&argv[i][2]); break;
             case 'r': execfile(argv[i][2] ? &argv[i][2] : "init.cfg", false); restoredinits = true; break;
             case 'd': dedicated = atoi(&argv[i][2]); if(dedicated<=0) dedicated = 2; break;
             case 'w': scr_w = clamp(atoi(&argv[i][2]), SCR_MINW, SCR_MAXW); if(!findarg(argc, argv, "-h")) scr_h = -1; break;
@@ -822,21 +822,21 @@ int main(int argc, char **argv)
         SetEnvironmentVariable("SDL_DEBUG", "1");
         #endif
         #endif
-        if(SDL_Init(SDL_INIT_TIMER|SDL_INIT_VIDEO|SDL_INIT_AUDIO|par)<0) fatal("Unable to initialize SDL: %s", SDL_GetError());
+        if(SDL_Init(SDL_INIT_TIMER|SDL_INIT_VIDEO|SDL_INIT_AUDIO|par)<0) fatal("Nieudane uruchomienie SDL: %s", SDL_GetError());
     }
 
-    logoutf("init: net");
-    if(enet_initialize()<0) fatal("Unable to initialise network module");
+    logoutf("init: siec");
+    if(enet_initialize()<0) fatal("Nieudane uruchomienie modulu sieciowego");
     atexit(enet_deinitialize);
     enet_time_set(0);
 
-    logoutf("init: game");
+    logoutf("init: gra");
     game::parseoptions(gameargs);
     initserver(dedicated>0, dedicated>1);  // never returns if dedicated
     ASSERT(dedicated <= 1);
     game::initclient();
 
-    logoutf("init: video: mode");
+    logoutf("init: obraz: tryb");
     const SDL_VideoInfo *video = SDL_GetVideoInfo();
     if(video)
     {
@@ -846,8 +846,8 @@ int main(int argc, char **argv)
     int usedcolorbits = 0, useddepthbits = 0, usedfsaa = 0;
     setupscreen(usedcolorbits, useddepthbits, usedfsaa);
 
-    logoutf("init: video: misc");
-    defformatstring(capt)("Sandbox Engine %s", version);
+    logoutf("init: obraz: rozne");
+    defformatstring(capt)("Silnik Sandboksa %s", version);
     SDL_WM_SetCaption(capt, NULL);
     keyrepeat(false);
     SDL_ShowCursor(0);
@@ -856,32 +856,32 @@ int main(int argc, char **argv)
     gl_checkextensions();
     gl_init(scr_w, scr_h, usedcolorbits, useddepthbits, usedfsaa);
     notexture = textureload("data/notexture");
-    if(!notexture) fatal("could not find core textures");
+    if(!notexture) fatal("brak podstawowych tekstur");
     #ifdef NEWGUI
     UI::setup();
     #endif
 
-    logoutf("init: console");
+    logoutf("init: konsola");
     identflags &= ~IDF_PERSIST;
-    if(!execfile("data/stdlib.cfg", false)) fatal("cannot find data files (you are running from the wrong folder, try .bat file in the main folder)");   // this is the first file we load.
-    if(!execfile("data/font.cfg", false)) fatal("cannot find font definitions");
-    if(!setfont("default")) fatal("no default font specified");
+    if(!execfile("data/stdlib.cfg", false)) fatal("brak plikow z danymi (uruchomienie ze zlego folderu, sprobuj plik .bat w glownym folderze)");   // this is the first file we load.
+    if(!execfile("data/font.cfg", false)) fatal("nie znaleziono definicji czcionek");
+    if(!setfont("default")) fatal("brak domyslnej czcionki");
 
     formatstring(imagelogo)("data/%s/logo", game::gameident());
 
     inbetweenframes = true;
-    renderbackground("initialising...");
+    renderbackground("zaczynamy...");
 
-    logoutf("init: gl: effects");
+    logoutf("init: gl: efekty");
     loadshaders();
     particleinit();
     initdecals();
 
-    logoutf("init: world");
+    logoutf("init: swiat");
     camera1 = player = game::iterdynents(0);
     emptymap(0, true, NULL, false);
 
-    logoutf("init: sound");
+    logoutf("init: dzwiek");
     initsound();
 
     logoutf("init: cfg");
@@ -939,7 +939,7 @@ int main(int argc, char **argv)
 
     if(initscript) execute(initscript);
 
-    logoutf("init: mainloop");
+    logoutf("init: petla glowna");
 
     initmumble();
     resetfpshistory();

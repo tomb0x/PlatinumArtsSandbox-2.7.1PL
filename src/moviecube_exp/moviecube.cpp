@@ -401,7 +401,7 @@ namespace game
             cmode->setup();
         }
 
-        conoutf(CON_GAMEINFO, "\f2game mode is %s", server::modename(gamemode));
+        conoutf(CON_GAMEINFO, "\f2rodzaj gry: %s", server::modename(gamemode));
 
         if(m_sp)
         {

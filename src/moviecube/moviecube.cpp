@@ -303,8 +303,8 @@ namespace game
 //            intermission = true;
 //            player1->attacking = false;
 	    if(cmode) cmode->gameover();
-            conoutf(CON_GAMEINFO, "\f2intermission:");
-            conoutf(CON_GAMEINFO, "\f2game has ended!");
+            conoutf(CON_GAMEINFO, "\f2przerwa:");
+            conoutf(CON_GAMEINFO, "\f2gra zakończona!");
 	    #ifndef NEWGUI
 //            showscores(true);
             #endif
@@ -312,7 +312,7 @@ namespace game
         }
         else if(timeremain > 0)
         {
-            conoutf(CON_GAMEINFO, "\f2time remaining: %d %s", timeremain, timeremain==1 ? "minute" : "minutes");
+            conoutf(CON_GAMEINFO, "\f2pozostały czas: %d %s", timeremain, timeremain==1 ? "minuta" : "minut");
         }
     }
 
@@ -358,7 +358,7 @@ namespace game
         }
         DynamicEntity *d = clients[cn];
         if(!d) return;
-        if(notify && d->name[0]) conoutf("player %s disconnected", colorname(d));
+        if(notify && d->name[0]) conoutf("gracz %s odłączony", colorname(d));
         removetrackedparticles(d);
         removetrackeddynlights(d);
         if(cmode) cmode->removeplayer(d);
@@ -408,13 +408,13 @@ namespace game
             cmode->setup();
         }
 
-        conoutf(CON_GAMEINFO, "\f2game mode is %s", server::modename(gamemode));
+        conoutf(CON_GAMEINFO, "\f2rodzaj gry: %s", server::modename(gamemode));
 
         if(m_sp)
         {
             defformatstring(scorename)("bestscore_%s", getclientmap());
             const char *best = getalias(scorename);
-            if(*best) conoutf(CON_GAMEINFO, "\f2try to beat your best score so far: %s", best);
+            if(*best) conoutf(CON_GAMEINFO, "\f2spróbuj pobić swój dotychczasowy najlepszy wynik: %s", best);
         }
         else
         {

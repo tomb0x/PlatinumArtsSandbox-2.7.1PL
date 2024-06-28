@@ -1893,8 +1893,8 @@ namespace game
         if(map && cfg)
         {
             stream::offset len = map->size();
-            if(len > 4*1024*1024) conoutf(CON_ERROR, "map is too large: %d", len);
-            else if(len <= 0) conoutf(CON_ERROR, "could not read map");
+            if(len > 4*1024*1024) conoutf(CON_ERROR, "mapa jest za duza: %d", len);
+            else if(len <= 0) conoutf(CON_ERROR, "nie mozna wczytac mapy");
             else
             {
                 sendfile(-1, 2, cfg, "ri", N_UPLOADCFG);
@@ -1904,7 +1904,7 @@ namespace game
             delete cfg;
             delete map;
         }
-        else conoutf(CON_ERROR, "could not read map or cfg");
+        else conoutf(CON_ERROR, "nie mozna wczytac mapy lub cfg");
         remove(findfile(fname, "rb"));
         remove(findfile(cname, "rb"));
     }
