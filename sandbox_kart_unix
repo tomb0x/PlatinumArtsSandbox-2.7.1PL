@@ -4,7 +4,7 @@
 #SANDBOX_DIR=/usr/local/sandbox
 SANDBOX_DIR=.
 
-SANDBOX_OPTIONS="-r"
+SANDBOX_OPTIONS="-r -t0"
 #SANDBOX_OPTIONS="-r -q${HOME}/.pas271pl01"
 
 if [ -a ${SANDBOX_DIR}/bin/sandbox_client_64_krs ]
