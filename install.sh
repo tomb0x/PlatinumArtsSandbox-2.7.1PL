@@ -1,13 +1,13 @@
 #!/bin/bash
-# dear packagers, please run this script as follows in a chroot jail
+# drodzy twórcy pakietów, proszę uruchomić ten skrypt za pomocą ograniczenia chroot
 # PREFIX=/path/to/install ./install.sh
 
 if [ "${PREFIX}" == "" ]
 then
-	echo "You are installing sandbox globally, if you wish to abort, hit Ctrl-C now"
+	echo "Instalujesz sandbox globalnie, jeśli chcesz zrezygnować, naciśnij teraz Ctrl-C"
 	echo ""
-	echo "Enter installation path..."
-	echo "default: /usr/local/share/games"
+	echo "Wprowadź ścieżkę instalowania..."
+	echo "domyslnie: /usr/local/share/games"
 	read PREFIX
 
 	if [ "${PREFIX}" == "" ]
@@ -15,60 +15,60 @@ then
 		PREFIX="/usr/local/share/games"
 	fi
 
-	echo "Sandbox will be installed in \"${PREFIX}/sandbox\""
-	echo "Press enter to continue"
+	echo "Sandbox będzie zainstalowany w \"${PREFIX}/sandbox\""
+	echo "Wciśnij enter aby kontynuować"
 	read CC
 fi
 
 if [ -e "${PREFIX}/sandbox" ]
 then
-	echo "NOTE, \"${PREFIX}/sandbox\" already exists"
+	echo "UWAGA, \"${PREFIX}/sandbox\" już istnieje"
 	rm -rf "${PREFIX}/sandbox"
 fi
 
 if [ -e "/usr/bin/sandbox" ]
 then
-	echo "NOTE, \"/usr/bin/sandbox\" already exists"
+	echo "UWAGA, \"/usr/bin/sandbox\" już istnieje"
 	rm -f "/usr/bin/sandbox"
 fi
 
-echo "Creating directory \"${PREFIX}/sandbox\""
+echo "Tworzenie katalogu \"${PREFIX}/sandbox\""
 mkdir -p "${PREFIX}/sandbox"
 if [ $? -ne 0 ]
 then
-	echo "Failed to create directory, do you have permission?"
+	echo "Błąd tworzenia katalogu, masz uprawnienia?"
 	exit 1
 fi
 
-echo "Copying files to \"${PREFIX}/sandbox\" (this may take a while)"
+echo "Kopiowanie plików do \"${PREFIX}/sandbox\" (to może trochę potrwać)"
 cp -r . "${PREFIX}/sandbox"
 if [ $? -ne 0 ]
 then
-	echo "Failed to copy files, do you have permission?"
+	echo "Błąd kopiowania plików, masz uprawnienia?"
 	exit 1
 fi
 
-echo "Creating symlink from \"/usr/bin/sandbox\" to \"${PREFIX}/sandbox/sandbox_unix\""
+echo "Tworzenie łącza symbolicznego z \"/usr/bin/sandbox\" do \"${PREFIX}/sandbox/sandbox_unix\""
 ln -s "${PREFIX}/sandbox/sandbox_unix" "/usr/bin/sandbox"
 if [ $? -ne 0 ]
 then
-	echo "Failed to create symlink, do you have permission?"
+	echo "Błąd tworzenia łącza symbolicznego, masz uprawnienia?"
 	exit 1
 fi
 
-echo "Installing pixmaps to /usr/share/pixmaps"
+echo "Instalowanie pixmap do /usr/share/pixmaps"
 cp ./linux/*.png "/usr/share/pixmaps"
 
-echo "Installing .desktop files"
+echo "Instalowanie plików .desktop"
 cp ./linux/*.desktop "/usr/share/applications"
 
-echo "Sandbox has been successfully installed"
+echo "Sandbox został poprawnie zainstalowany"
 echo ""
-echo "To fully uninstall sandbox, run the following commands"
+echo "Aby odinstalować sandbox, wprowadź poniższe polecenia"
 echo "rm /usr/bin/sandbox"
 echo "rm -r \"${PREFIX}/sandbox\""
 echo "rm /usr/share/pixmaps/sandbox_*"
 echo "rm /usr/share/applications/sandbox_*"
 echo ""
-echo "To run sandbox, simply enter \"sandbox\" into your shell of choice"
-echo "or select one of the launcher from your desktop's menu under the \"Games\" subtree"
+echo "Aby uruchomić sandbox, po prostu wprowadź \"sandbox\" w terminalu lub wierszu poleceń"
+echo "lub wybierz jeden z elementów uruchamiających w menu w kategorii \"Gry\" "
