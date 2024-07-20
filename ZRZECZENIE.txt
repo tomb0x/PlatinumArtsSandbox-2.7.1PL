@@ -1,0 +1,13 @@
+Sandbox opiera się na silniku oprogramowania, który zawierał broń i potwory. Wiele wysiłku włożono w usunięcie możliwości używania broni i potworów w (głównym) trybie gry FPS, chociaż istnieje mało prawdopodobne, że coś zostało przeoczone. Dodatkowo w kodzie źródłowym (zawartość folderu o nazwie /src) mogą pojawić się odniesienia do potworów i broni.
+
+Dodatkowo tryb platformowy (SSP) oferuje łagodną akcję przypominającą Mario. Nauczyciele/rodzice mogą najpierw wypróbować ten tryb i upewnić się, że jest odpowiedni dla ich dzieci. SANDBOX_SSP.bat, sandbox_ssp.sh, Gra_Platformowa.bat oraz Gra_Platformowa.sh można po prostu usunąć, jeśli zostanie uznany za nieodpowiedni.
+
+Tryby gry RPG i Rose Storm umożliwiają wykonywanie brutalnych ataków zaklęć i ataków wręcz. Jeśli chcesz odebrać im dostęp, usuń SANDBOX_RPG.bat, sandbox_rpg.sh,  RoseStorm.bat oraz RoseStorm.sh w folderze najwyższego poziomu.
+
+Korzystając z tego oprogramowania, zgadzasz się o tym pamiętać i nie będziesz pociągać Platinum Arts do odpowiedzialności za jakiekolwiek zdarzenia z tym związane. W przypadku jakichkolwiek pytań i komentarzy prosimy o e-mail PlatinumArts@gmail.com
+
+Prawa autorskie (C) 2007 Platinum Arts LLC
+
+To oprogramowanie jest dostarczane w stanie „takim, jakie jest”, bez jakichkolwiek wyraźnych lub dorozumianych treści
+Gwarancja. W żadnym przypadku autorzy nie ponoszą odpowiedzialności za jakiekolwiek szkody
+wynikające z używania tego oprogramowania.
