@@ -8,5 +8,4 @@ Prawa autorskie (C) 2007 Platinum Arts LLC
 To oprogramowanie jest dostarczane w stanie „takim, jakim jest”, bez jakichkolwiek wyraźnych lub dorozumianych treści
 Gwarancja. W żadnym przypadku autorzy nie ponoszą odpowiedzialności za jakiekolwiek szkody
 wynikające z używania tego oprogramowania.
-
-#tp
+#usuwam
